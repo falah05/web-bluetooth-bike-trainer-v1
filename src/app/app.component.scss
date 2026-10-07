@@ -1,0 +1,82 @@
+// https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+.dashboard-container {
+    display: grid;
+    grid-template-columns: repeat(2, auto); // 2 kolom, lebar menyesuaikan gauge terlebar
+    justify-content: start; // rapatkan ke kiri, seperti align-items: flex-start sebelumnya
+    padding: 20px;
+    gap: 20px;
+}
+
+.toolbar-spacer {
+    flex: 1 1 auto;
+}
+
+.connect-buttons {
+    display: flex;
+    gap: 10px; // jarak antar tombol Connect
+}
+
+.map-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+#map {
+    width: 100vw;
+    height: 100vh;
+}
+
+.toastr-container {
+    position: fixed;
+    top: 70px;
+    right: 10px;
+    width: 300px;
+}
+
+.fullWidthOnBottom {
+    display: block;
+    position: fixed;
+    bottom: 20px;
+    left: 10px;
+    right: 10px;
+    height: 25vh; // 25% of the viewport height
+}
+
+.upload-file::file-selector-button{
+    background:#a93f15;
+    color:white;
+    border:none;
+    padding:7px 9px;
+    border-radius:8px;
+    cursor:pointer;
+    font-size: medium;
+}
+
+.upload-file::file-selector-button:hover{
+    background:#ff7b45;
+}
+
+/* Penyesuaian untuk Navbar/Toolbar */
+mat-toolbar {
+  background-color: #ff5917; /* Ganti dengan warna yang Anda inginkan */
+  color: rgb(255, 255, 255); /* Ganti dengan warna teks yang sesuai */
+  height: 45px;   /* Ganti dengan tinggi yang Anda inginkan */
+  opacity: 1;     /* Sesuaikan opacity jika perlu */
+  display: flex;
+  align-items: center;
+}
+
+/* Penyesuaian elemen di dalam toolbar (opsional) */
+mat-toolbar span,
+mat-toolbar button {
+    background-color: #ff5917
+}
+mat-toolbar app-elapsed-time,
+mat-toolbar app-distance,
+mat-toolbar app-grade,
+mat-toolbar input {
+  font-size: 20px; /* Sesuaikan ukuran font jika perlu */
+  margin: 0 8px; /* Contoh penambahan margin antar elemen */
+}

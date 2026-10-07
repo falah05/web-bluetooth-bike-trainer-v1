@@ -1,0 +1,97 @@
+<!--
+
+<!DOCTYPE html>
+
+<div class="dialog-header">
+    <h2 mat-dialog-title>Trainer Control</h2>
+</div>
+
+
+<mat-dialog-content>
+
+    Resistance
+     <div class="section">
+         <h3>Resistance</h3>
+         <mat-slider min="0" max="100" step="1">
+            <input matSliderThumb [(ngModel)]="resistance">
+         </mat-slider>
+         <div class="value">
+            {{ resistance }} %
+         </div>
+     </div>
+
+    <mat-divider></mat-divider>
+
+    Grade
+     <div class="section">
+        <h3>Grade</h3>
+        <mat-slider min="-10" max="20" step="1">
+            <input matSliderThumb [(ngModel)]="grade">
+        </mat-slider>
+        <div class="value">
+            {{ grade }} %
+        </div>
+     </div>
+
+    <mat-divider></mat-divider>
+
+    Temperature
+     <div class="section">
+        <h3>Temperature</h3>
+        <div class="stepper">
+            <button class="min-button" mat-mini-fab (click)="decreaseTemperature()">-</button>
+            <span>{{temperature}} °C</span>
+            <button class="plus-button" mat-mini-fab (click)="increaseTemperature()">+</button>
+        </div>
+     </div>
+
+    <mat-divider></mat-divider>
+
+    Wind Speed
+     <div class="section">
+        <h3>Wind Speed</h3>
+        <div class="stepper">
+            <button class="min-button" mat-mini-fab (click)="decreaseWind()">-</button>
+            <span>{{windSpeed}} km/h</span>
+            <button class="plus-button" mat-mini-fab (click)="increaseWind()">+</button>
+        </div>
+     </div>
+
+</mat-dialog-content>
+
+<mat-dialog-actions align=end>
+    <button class="restore-button" mat-stroked-button (click)="restoreDefault()">Restore Default</button>
+    <button class="close-button" mat-raised-button color="primary" (click)="close()">Close</button>
+</mat-dialog-actions>
+-->
+
+<h2>Grade Test</h2>
+
+<div class="grade-test">
+
+    <button mat-raised-button
+            (click)="debugGrade = debugGrade - 1">
+        -
+    </button>
+
+    <input
+        type="number"
+        [(ngModel)]="debugGrade">
+
+    <button mat-raised-button
+            (click)="debugGrade = debugGrade + 1">
+        +
+    </button>
+
+</div>
+
+<br>
+
+<button
+    mat-raised-button
+    color="primary"
+    (click)="sendGrade()">
+
+    Send Grade
+
+</button>

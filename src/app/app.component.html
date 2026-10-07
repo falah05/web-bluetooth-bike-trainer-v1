@@ -1,0 +1,43 @@
+<mat-toolbar color="primary" style="opacity: 0.9;">
+  <span>{{title}}</span>
+  <span class="toolbar-spacer"></span>
+  <app-elapsed-time *ngIf="isSimulationStarted"></app-elapsed-time>
+  <span class="toolbar-spacer" *ngIf="isSimulationStarted"></span>
+  <app-distance *ngIf="isSimulationStarted"></app-distance>
+  <span class="toolbar-spacer" *ngIf="isSimulationStarted"></span>
+  <app-grade *ngIf="isSimulationStarted"></app-grade>
+  <span class="toolbar-spacer" *ngIf="isSimulationStarted"></span>
+  <app-total-energy *ngIf="isSimulationStarted"></app-total-energy>
+  <span class="toolbar-spacer" *ngIf="isSimulationStarted"></span>
+  <span class="toolbar-spacer" *ngIf="isSimulationStarted"></span>
+
+  <!-- <button mat-raised-button color="accent" *ngIf="!isSimulationStarted" (click)="openControlDialog()">Data Control</button> -->
+  <div class="connect-buttons">
+    <button mat-raised-button [color]="espConnected ? 'accent' : 'primary'" (click)="toggleESP()">
+      {{ espConnected ? 'Disconnect ESP32' : 'Connect ESP32' }}
+    </button>
+    <button mat-raised-button [color]="heartRateConnected ? 'accent' : 'primary'" (click)="toggleHeartRate()">
+      {{ heartRateConnected ? 'Disconnect Heart Rate' : 'Connect Heart Rate' }}
+    </button>
+    <button mat-raised-button [color]="cadenceConnected ? 'accent' : 'primary'" (click)="toggleCadence()">
+      {{ cadenceConnected ? 'Disconnect Pedal' : 'Connect Pedal' }}
+    </button>
+  </div>
+  <input class="upload-file" *ngIf="!isSimulationStarted" type="file" (change)="onFileSelected($event)" />
+  <button mat-raised-button color="primary" *ngIf="!isSimulationStarted" (click)="startSimulation()">Start Simulation</button>
+  <button mat-raised-button color="primary" *ngIf="isSimulationStarted" (click)="stopSimulation()">Stop Simulation</button>
+</mat-toolbar>
+<mat-progress-bar *ngIf="inProgress" mode="indeterminate"></mat-progress-bar>
+<div class="toastr-container" varia-live="polite" toastContainer></div>
+<div class="map-container">
+  <div id="map"></div>
+</div>
+<div class="dashboard-container">
+  <app-heart-rate></app-heart-rate>
+  <app-speed></app-speed>
+  <app-cadence></app-cadence>
+  <app-power></app-power>
+  <app-pedal-power></app-pedal-power>
+</div>
+<app-elevation-profile class="fullWidthOnBottom" [leafletGpx]="leafletGpx" [isSimulationStarted]="isSimulationStarted"
+  (positionChangeEvent)="handlePositionChangeEvent($event)"></app-elevation-profile>
